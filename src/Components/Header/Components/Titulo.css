@@ -1,0 +1,15 @@
+.headerImg {
+    height: 35px;
+    
+}
+
+.botonesHeader {
+    background-color: transparent;
+    border: none;
+}
+
+.botonesHeader:hover{
+    background-color: rgb(94, 199, 248);
+    border-radius: 50%;
+}
+

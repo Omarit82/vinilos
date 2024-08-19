@@ -1,0 +1,14 @@
+main {
+    background-color: rgb(117, 177, 216);
+    color: #fff;
+}
+
+.disco {
+    height: 75px;
+    transition: transform 2s ease-in;
+}
+
+.disco:hover{
+    transform: rotateZ(1440deg);
+}
+
