@@ -6,6 +6,7 @@ import './Header.css';
 export const Header = () => {
     const arrayNavbar = ['Catalogo', 'Vinilos', 'CDs', 'Ofertas', 'Quienes somos'];
     const titulo = 'Tu disquería Online';
+    
     return(
         <header className='d-flex'>
             <Logo />
