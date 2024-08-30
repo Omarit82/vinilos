@@ -16,5 +16,7 @@ nav {
     }
     .btn-boton:hover{
         background-color: rgb(9, 48, 99);
+        color:white;
     }
+    background-color: rgb(18, 87, 177);
 }

@@ -1,16 +1,18 @@
 import './Navbar.css';
-import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 
-export const Navbar = ({listado}) => {
+function Navbar({listado}){
     return (
         <nav>
             <ul className ='d-flex justify-content-around'>
                 {listado.map((item, index) =>(
                     <li className='m-2' key={index}>
-                        <Button variant='boton'>{ item }</Button>
+                        <Link to={item}>{ item }</Link>
                     </li>
                 ))}
             </ul>
         </nav>
     )
 }
+
+export default Navbar;
