@@ -22,7 +22,6 @@ function App() {
                     <Route path="*" element={ <Error /> } />
                 </Route>
             </Routes>
-            <footer>Powered by me.</footer>
         </BrowserRouter>
     )
 }

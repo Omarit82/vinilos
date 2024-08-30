@@ -1,7 +1,7 @@
 import './Navbar.css';
 import { Link } from "react-router-dom";
 
-function Navbar({listado}){
+export function Navbar({listado}){
     return (
         <nav>
             <ul className ='d-flex justify-content-around'>
@@ -14,5 +14,3 @@ function Navbar({listado}){
         </nav>
     )
 }
-
-export default Navbar;
