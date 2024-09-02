@@ -1,5 +1,4 @@
 import SearchImg from './assets/img/search.png';
-import { CartWidget } from './CartWidget';
 
 import './Titulo.css';
 
@@ -11,9 +10,6 @@ export const Titulo = ({titulo}) => {
                 <input type="text" name="busqueda" placeholder=' ...busqueda' className='w-75 me-3' />
                 <button type="submit" className='botonesHeader'><img src={ SearchImg } alt="Busqueda" className="headerImg" /></button>
             </form>
-            <div className='d-flex'>
-                <CartWidget />
-            </div>
         </div>
     )
 }

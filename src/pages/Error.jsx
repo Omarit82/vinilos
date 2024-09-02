@@ -1,10 +1,8 @@
-import { ItemListContainer } from "../Header/Components/ItemListContainer";
-import DiscoImg from "./assets/img/disco.png";
-import './Main.css';
+import { ItemListContainer } from "../Components/ItemListContainer/ItemListContainer";
+import DiscoImg from "../assets/img/disco.png";
 
-export const Main = () => {
-
-    const mensaje = 'Bienvenidos!'
+function Error(){
+    const mensaje = 'ERROR 404'
 
     return (
         <main className=" vh-100 p-5">
@@ -16,3 +14,5 @@ export const Main = () => {
         </main>
     )
 }
+
+export default Error;

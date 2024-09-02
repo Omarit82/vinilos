@@ -8,11 +8,14 @@ nav {
         list-style: none;
         
     }
+    ul{
+        margin-bottom: 0;
+    }
     .btn-boton {
         background-color: rgb(18, 87, 177);
         color: #fff;
         border-radius: 0;
-        padding: 2px 25px;
+       
     }
     .btn-boton:hover{
         background-color: rgb(9, 48, 99);

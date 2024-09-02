@@ -6,6 +6,8 @@ import Vinilos from "./pages/Vinilos";
 import Cds from "./pages/Cds";
 import Ofertas from "./pages/Ofertas";
 import About from "./pages/About";
+import Error from "./pages/Error";
+import './App.css';
 
 
 function App() {
@@ -13,7 +15,8 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={ <Layout /> }>
-                    <Route index element={<Home />} />
+                    <Route path="/" element={<Home />} />
+                    <Route path="/home" element={<Home />} />
                     <Route path="/catalogo" element={ <Catalogo /> } />
                     <Route path="/vinilos" element={ <Vinilos /> } />
                     <Route path="/cds" element={ <Cds /> } />
