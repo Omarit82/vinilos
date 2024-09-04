@@ -1,31 +1,24 @@
 import { ItemCount } from "./ItemCount";
 import { ItemList} from "./ItemList";
-import DiscoImg from "../assets/img/disco.png";
 import { useEffect, useState } from "react";
+import { getDiscos } from "../../getData";
+import DiscoImg from "../assets/img/disco.png";
+
 
 export const ItemListContainer = ( {greeting} ) => {
-
-    /*Estado para almacenar los productos.*/ 
     const [productos, setProductos] = useState([]);
-
-    /**Funcion asyncrona para recibir los discos desde la api */
-    async function getDiscos(){
-        try {
-            const respuesta =  await fetch('https://66804c6456c2c76b495bb799.mockapi.io/discos/');
-            if(!respuesta.ok){
-                throw new Error ('Error en la solicitud '+ respuesta.status);
-            }
-            const datos = await respuesta.json();
-            setProductos(datos); 
-        } catch (error) {
-            throw new Error ('Error en la solicitud '+ error);
-        }
-    }
-
-    useEffect(()=>{
-        getDiscos();
-    }, []);
     
+    
+    
+    useEffect(()=>{
+        getDiscos()
+            .then(response =>{
+                setProductos(response)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    },[]);
     return (
         <div>
             <div className="d-flex justify-content-center align-items-center">

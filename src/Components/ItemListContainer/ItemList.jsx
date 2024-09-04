@@ -1,14 +1,14 @@
 import { Item } from './Item';
+import './ItemList.css';
 
 export const ItemList = ({ productos }) => {
-    console.log(productos);
 
 
     return(
-        <>
-        {productos.map((item, index) =>(
-            <Item key={ index } disco = { item } />           
-        ))}
-        </>
+        <div className='seccion'>
+            {productos.map((item, index) =>(
+                <Item key={ index } disco = { item } />           
+            ))}
+        </div>
     )
 }
