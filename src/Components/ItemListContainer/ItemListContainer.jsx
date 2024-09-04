@@ -28,7 +28,7 @@ export const ItemListContainer = ( {greeting} ) => {
             </div>
             <div>
                 <ItemList productos={productos} />
-                <ItemCount initial={1} stock={10} onAdd={(quantity) => console.log('Cantidad Agregada', quantity)} />
+                
             </div>
         </div>
     )

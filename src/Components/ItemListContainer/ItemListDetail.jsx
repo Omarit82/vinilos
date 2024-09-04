@@ -13,11 +13,12 @@ export const ItemListDetail = ( {disco} )=>{
                     <h4>Año de salida: { disco.anioRelease }</h4>
                     <h4>Formato: {disco.formato}</h4>
                     <h4>Genero: {disco.genero}</h4>
+                    <h5>Stock disponible: {disco.stock}</h5>
                 </div>              
             </div>
             
             <img src={disco.imagen} alt={disco.titulo} className='imgDisco m-2' />
-            <ItemCount />
+            <ItemCount initial={1} stock={disco.stock} onAdd={(quantity) => console.log('Cantidad Agregada', quantity)}/>
         </article>
     );
 }
