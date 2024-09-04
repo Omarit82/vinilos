@@ -17,7 +17,7 @@ export const Producto = ()=>{
                 console.log(error);
             })
     },[]);
-    console.log(producto);
+   
     return(
         <div className='d-flex flex-column justify-content-center align-items-center'>
             <ItemListDetail disco={producto} />

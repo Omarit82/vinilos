@@ -3,11 +3,12 @@ import { ItemListContainer } from "../Components/ItemListContainer/ItemListConta
 
 function About(){
     const mensaje = 'About Us!'
+    const empty = '';
 
     return (
         <main className="p-5">
             <div className="d-flex justify-content-center align-items-center">
-                <ItemListContainer greeting = {mensaje} /> 
+                <ItemListContainer greeting = {mensaje} filtro={empty}/> 
             </div>    
         </main>
     )
