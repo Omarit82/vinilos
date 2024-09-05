@@ -1,3 +1,10 @@
 .coverDisco {
     max-width: 100px;
+    height: 75px;
+    transition: transform 0.2s ease;
+}
+
+
+.coverDisco:hover{
+    transform: rotateY(180deg);
 }
