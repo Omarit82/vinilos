@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { getDiscoPorId } from '../../getData';
 import { ItemDetail } from './ItemDetail';
 
-import './ItemDetailContainer.css';
 
 
 export const ItemDetailContainer = ()=>{

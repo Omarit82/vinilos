@@ -5,8 +5,9 @@ import { Footer } from "../Components/Footer/Footer";
 
 
 
+
 function Layout(){
-    const arrayNavbar = ['Catalogo', 'Vinilos', 'CDs', 'Ofertas'];
+    const arrayNavbar = ['Vinilos', 'CDs', 'Ofertas'];
     return (
         <>
             <Header />
