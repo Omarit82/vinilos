@@ -1,57 +1,40 @@
 import { ItemList} from "./ItemList";
 import { useEffect, useState } from "react";
-import { getDiscos } from "../../getData";
+import { getDiscos, getDiscosByCategory } from "../../getData";
 import DiscoImg from "../assets/img/disco.png";
+import { useParams } from "react-router-dom";
 
 
-export const ItemListContainer = ( {greeting, filtro} ) => {
+export const ItemListContainer = ( {greeting} ) => {
     const [productos, setProductos] = useState([]);
     
+    const { categoriaId } = useParams();
     
+   
     
-    useEffect(()=>{
-        getDiscos()
-            .then(response =>{
-                filtrado(response);
-                ///setProductos(response);
+    useEffect(() => {
+        const asyncFunc = categoriaId ? getDiscosByCategory : getDiscos
+
+        asyncFunc (categoriaId)
+            .then(response => {
+                
+                setProductos(response);
             })
             .catch(error => {
-                console.log(error);
+                console.error(error);
             })
-    },[]);
-
-    async function filtrado(rsp){
-        let filtrado;
-        switch (filtro) {
-            case "ofertas":
-                filtrado = rsp.filter(item => item.isOferta == true);
-                setProductos(filtrado);
-                break;
-            case "vinilos":
-                filtrado = rsp.filter(item => (item.formato).includes('vinilo'));
-                setProductos(filtrado);
-                break;
-            case "cd":
-                filtrado = rsp.filter(item => (item.formato).includes('cd'));
-                setProductos(filtrado);
-                break;
-            default:
-                setProductos(rsp);
-                break;
-        }       
-    }
-    
+    }, [categoriaId])
 
     return (
-        <div>
+        <main>
             <div className="d-flex justify-content-center align-items-center">
                 <img src={ DiscoImg } alt="disco"  className="disco m-3" />
-                <h2>{greeting}</h2>
+                <h2>{categoriaId}{greeting}</h2>
                 <img src={ DiscoImg } alt="disco"  className="disco m-3" />
             </div>
             <div>
                 <ItemList productos={productos} />
             </div>
-        </div>
+        </main>
     )
 }

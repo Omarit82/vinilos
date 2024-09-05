@@ -3,13 +3,12 @@ import { ItemListContainer } from "../Components/ItemListContainer/ItemListConta
 
 function Error(){
     const mensaje = 'ERROR 404';
-    const empty = '';
     return (
-        <main className="p-5">
+        <>
             <div className="d-flex justify-content-center align-items-center">
-                <ItemListContainer greeting = {mensaje} filtro={empty}/>
+                <ItemListContainer greeting = {mensaje} />
             </div>    
-        </main>
+        </>
     )
 }
 

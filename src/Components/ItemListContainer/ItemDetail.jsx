@@ -1,8 +1,8 @@
+import './ItemDetail.css';
 import { ItemCount } from './ItemCount';
-import './ItemListDetail.css';
 
-
-export const ItemListDetail = ( {disco} )=>{
+export const ItemDetail = ({ disco })=>{
+    
     return(
         <article className="detalle">
             <div className='d-flex flex-column justify-content-center align-items-center'>
@@ -20,5 +20,5 @@ export const ItemListDetail = ( {disco} )=>{
             <img src={disco.imagen} alt={disco.titulo} className='imgDisco m-2' />
             <ItemCount initial={1} stock={disco.stock} onAdd={(quantity) => console.log('Cantidad Agregada', quantity)}/>
         </article>
-    );
+    )
 }

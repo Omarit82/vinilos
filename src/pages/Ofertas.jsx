@@ -1,12 +1,12 @@
 import { ItemListContainer } from "../Components/ItemListContainer/ItemListContainer";
 
 function Ofertas(){
-    const mensaje = 'Nuestras Ofertas!';
-    const ofertas = 'ofertas';
+    const mensaje = 'Ofertas!';
+    
     return (
         <main className="p-5">
             <div className="d-flex justify-content-center align-items-center">
-                <ItemListContainer greeting = {mensaje} filtro={ofertas}/> 
+                <ItemListContainer greeting = {mensaje} /> 
             </div>    
         </main>
     )

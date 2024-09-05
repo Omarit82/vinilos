@@ -7,6 +7,7 @@ export function Navbar({listado}){
         <nav>
             <ul className ='d-flex justify-content-around align-items-center'>
                 {listado.map((item, index) =>(
+                    
                     <li className='m-2 btn-boton p-2' key={index}>
                         <Link to={item}>{ item }</Link>
                     </li>

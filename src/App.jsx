@@ -1,14 +1,14 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
-import Catalogo from "./pages/Catalogo";
-import Vinilos from "./pages/Vinilos";
-import Cds from "./pages/Cds";
-import Ofertas from "./pages/Ofertas";
-import About from "./pages/About";
 import Error from "./pages/Error";
-import { Producto } from "./pages/Producto";
+import Catalogo from "./pages/Catalogo";
+import Ofertas from "./pages/Ofertas";
+import Vinilos from "./pages/Vinilos";
 import './App.css';
+import { ItemListContainer } from "./Components/ItemListContainer/ItemListContainer";
+import { ItemDetailContainer } from "./Components/ItemListContainer/ItemDetailContainer";
+
 
 
 
@@ -17,14 +17,11 @@ function App() {
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={ <Layout /> }>
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/catalogo" element={ <Catalogo /> } />
-                    <Route path="/catalogo/:itemId" element={<Producto />}/>
-                    <Route path="/vinilos" element={ <Vinilos /> } />
-                    <Route path="/cds" element={ <Cds /> } />
-                    <Route path="/ofertas" element={ <Ofertas/> } />
-                    <Route path="/about" element={ <About /> } />
+                <Route path='/' element={ <Layout /> }>
+                    <Route path='/home' element={<Home />} />
+                    <Route path='/catalogo' element={<Catalogo />} />
+                    <Route path='/:categoriaId' element={<ItemListContainer />} />
+                    <Route path='/:categoriaId/:itemId' element={<ItemDetailContainer />} />
                     <Route path="*" element={ <Error /> } />
                 </Route>
             </Routes>

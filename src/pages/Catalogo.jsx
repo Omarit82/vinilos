@@ -1,15 +1,15 @@
 import { ItemListContainer } from "../Components/ItemListContainer/ItemListContainer";
 
+
 function Catalogo(){
-    const mensaje = 'Catalogo!';
-    const catalogo = 'catalogo';
     
+    const mensaje = 'Nuestro catalogo completo';
     return (
-        <main className=" p-5">
+        <>
             <div className="d-flex justify-content-center align-items-center">
-                <ItemListContainer greeting = {mensaje} filtro={catalogo} /> 
+                <ItemListContainer greeting = {mensaje} />
             </div>    
-        </main>
+        </>
     )
 }
 
