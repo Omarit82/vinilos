@@ -14,6 +14,7 @@ export const ItemDetail = ({ disco })=>{
                     <h4>Formato: {disco.formato}</h4>
                     <h4>Genero: {disco.genero}</h4>
                     <h5>Stock disponible: {disco.stock}</h5>
+                    <h5>Precio: USD { disco.precio }</h5>
                 </div>              
             </div>
             
