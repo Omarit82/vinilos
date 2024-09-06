@@ -17,8 +17,8 @@ function App() {
                 <Route element={ <Layout /> }>
                     <Route path='/' element={<Home />} />
                     <Route path='/Home' element={<Home />} />
-                    <Route exact path='/:categoriaId' element={<ItemListContainer />} />
-                    <Route exact path='/:categoriaId/:itemId' element={<ItemDetailContainer />} />
+                    <Route exact path='/Catalogo/:categoriaId' element={<ItemListContainer />} />
+                    <Route exact path='/Catalogo/Disco/:itemId' element={<ItemDetailContainer />} />
                     <Route path="*" element={ <Error /> } />
                 </Route>
             </Routes>

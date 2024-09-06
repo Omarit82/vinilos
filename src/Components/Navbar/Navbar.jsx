@@ -9,7 +9,7 @@ export function Navbar({listado}){
                 {listado.map((item, index) =>(
                     
                     <li className='m-2 btn-boton p-2' key={index}>
-                        <Link to={item}>{ item }</Link>
+                        <Link to={`Catalogo/${item}`}>{ item }</Link>
                     </li>
                 ))}
                  <div className='d-flex'>

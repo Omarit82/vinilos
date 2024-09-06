@@ -14,7 +14,7 @@ export const ItemDetailContainer = ()=>{
     useEffect(()=>{
         getDiscoPorId(itemId)
             .then(response => {
-                
+                console.log("Estoy aca");
                 setProducto(response);
             })
             .catch(error => {

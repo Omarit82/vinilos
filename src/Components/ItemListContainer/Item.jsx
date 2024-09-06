@@ -12,7 +12,7 @@ export const Item = ( {disco} ) => {
                 <h4>{ disco.anioRelease }</h4>
             </div>
             <img src={disco.imagen} alt={disco.titulo} className='imgDisco m-2' />
-            <Link to={`/catalogo/${disco.id}`} className='btn btn-success mb-4'>Mas Info</Link>
+            <Link to={`/Catalogo/Disco/${disco.id}`} className='btn btn-success mb-4'>Mas Info</Link>
         </article>
     )
 }
