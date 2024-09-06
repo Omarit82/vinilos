@@ -13,6 +13,7 @@ export const ItemListContainer = ( {greeting} ) => {
    
     
     useEffect(() => {
+        
         const asyncFunc = categoriaId ? getDiscosByCategory : getDiscos
 
         asyncFunc (categoriaId)
