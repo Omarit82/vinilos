@@ -1,4 +1,4 @@
-import { getDiscos } from "../getData";
+import { getDiscosByCategory } from "../getData";
 import { useState, useEffect } from "react";
 import DiscoImg from "../Components/assets/img/disco.png";
 import Disco1 from '../Components/assets/img/dsc1.png';
@@ -24,7 +24,7 @@ function Home(){
     const mensaje = 'Bienvenidos!';
     const [productos, setProductos] = useState([]);
     useEffect(() => {
-        getDiscos()
+        getDiscosByCategory()
             .then(response => {
                 
                 setProductos(response);

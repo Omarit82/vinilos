@@ -1,6 +1,6 @@
 import { ItemList} from "./ItemList";
 import { useEffect, useState } from "react";
-import { getDiscos, getDiscosByCategory } from "../../getData";
+import { getDiscosByCategory } from "../../getData";
 import DiscoImg from "../assets/img/disco.png";
 import { useParams } from "react-router-dom";
 
@@ -10,12 +10,8 @@ export const ItemListContainer = ( {greeting} ) => {
     
     const { categoriaId } = useParams();
     
-   
-    
     useEffect(() => {
-        
-        const asyncFunc = categoriaId ? getDiscosByCategory : getDiscos
-
+        const asyncFunc =  getDiscosByCategory;
         asyncFunc (categoriaId)
             .then(response => {
                 
