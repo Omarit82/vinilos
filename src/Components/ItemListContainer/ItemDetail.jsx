@@ -1,7 +1,28 @@
 import './ItemDetail.css';
 import { ItemCount } from './ItemCount';
+import { useContext, useState } from 'react';
+import { CartContext } from '../../context/CartContext';
+
+
 
 export const ItemDetail = ({ disco })=>{
+
+    const { carrito, addAlCart } = useContext(CartContext);
+    const [quantity, setQuantity] = useState(1);
+    console.log(carrito);
+    
+   
+    const increment = ()=>{
+        if(quantity < disco.stock){
+            setQuantity(quantity+1);
+        }
+    }
+
+    const decrement = ()=>{
+        if(quantity>1){
+            setQuantity(quantity-1);
+        }
+    }
     
     return(
         <article className="detalle">
@@ -17,9 +38,10 @@ export const ItemDetail = ({ disco })=>{
                     <h5>Precio: USD { disco.precio }</h5>
                 </div>              
             </div>
-            
             <img src={disco.imagen} alt={disco.titulo} className='imgDisco m-2' />
-            <ItemCount initial={1} stock={disco.stock} onAdd={(quantity) => console.log('Cantidad Agregada', quantity)}/>
+            <ItemCount cantidad={quantity} increment={increment} decrement={decrement} handleCart={()=>{
+                addAlCart(disco, quantity)
+            }}/>
         </article>
     )
 }
