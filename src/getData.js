@@ -1,6 +1,7 @@
+
 export async function getDiscoPorId(discoId){
     try {
-        const respuesta =  await fetch('https://66804c6456c2c76b495bb799.mockapi.io/discos/');
+       /* const respuesta =  await fetch('https://66804c6456c2c76b495bb799.mockapi.io/discos/');*/
         const datos = await respuesta.json();
         const disco = await datos.find(item => item.id == discoId);
     

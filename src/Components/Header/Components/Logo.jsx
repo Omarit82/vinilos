@@ -1,5 +1,5 @@
 import LogoImg from './assets/img/logo.webp';
-import './Logo.css';
+import './css/Logo.css';
 import { Link } from 'react-router-dom';
 
 export const Logo = () => {

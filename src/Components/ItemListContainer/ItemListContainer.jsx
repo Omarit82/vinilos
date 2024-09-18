@@ -1,6 +1,6 @@
 import { ItemList} from "./ItemList";
 import { useEffect, useState } from "react";
-import { getDiscosByCategory } from "../../getData";
+import { collection, getDocs, getFirestore} from 'firebase/firestore';
 import DiscoImg from "../assets/img/disco.png";
 import { useParams } from "react-router-dom";
 import { Loader } from "./Loader";
@@ -13,17 +13,14 @@ export const ItemListContainer = ( {greeting} ) => {
     const { categoriaId } = useParams();
     
     useEffect(() => {
-        const asyncFunc =  getDiscosByCategory;
-        asyncFunc (categoriaId)
-            .then(response => {
-                setProductos(response);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error(error);
-                setError(true);
-            })
-    }, [categoriaId])
+        const db = getFirestore();
+        const discos = collection(db,"discos");
+        getDocs(discos)
+        .then((snapshot) => {
+            setLoading(false);
+            setProductos(snapshot.docs.map((doc)=> doc.data()))
+        })
+    }, [])
 
     return (
         <main>

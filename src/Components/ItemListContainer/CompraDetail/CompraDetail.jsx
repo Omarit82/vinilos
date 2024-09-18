@@ -8,17 +8,14 @@ export const CompraDetail = ()=>{
 
 
     return(
-        <>
-            <main>
-                <h2 className="mb-0 text-center">Detalle de la compra</h2>
-            </main>
-            {
-                carrito.map((prod) => (                
-                        <CheckOutItem item={prod} key={prod.id} />
-                ))
-            }
-
-        </>
+        <main>
+            <h2 className="mb-0 text-center p-5">Detalle de la compra</h2>
+                {
+                    carrito.map((prod) => (                
+                            <CheckOutItem item={prod} key={prod.id} />
+                    ))
+                }
+        </main>
         
     )
 }

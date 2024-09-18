@@ -14,19 +14,18 @@ import { useState } from "react";
 function App() {
 
     const [carrito, setCarrito ] = useState([]);   
+
     const addAlCart = (disco, quantity) =>{
         const item = {...disco,quantity};/**AGREGA AL OBJETO DISCO LA CANTIDAD A COMPRAR */
         const auxCarrito = [...carrito];
         const enElCarrito = auxCarrito.find((disco) => disco.id === item.id);
-        
-
+    
         if(enElCarrito){
             enElCarrito.quantity += quantity;
             setCarrito(auxCarrito);
         }else{
             setCarrito( [...carrito, item]);
         }
-
        /***setea el arreglo que tiene carrito con la info que ya tenia carrito mas el nuevo item. */
     }
 

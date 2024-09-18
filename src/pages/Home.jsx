@@ -26,7 +26,6 @@ function Home(){
     useEffect(() => {
         getDiscosByCategory()
             .then(response => {
-                
                 setProductos(response);
             })
             .catch(error => {
