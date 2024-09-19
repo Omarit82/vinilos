@@ -10,8 +10,8 @@ export const CartWidget = () => {
 
     return (
         <>
-            <button className='botonesHeader'><Link to={`Checkout/`}><img src={ CartImg } alt="Carrito" className='headerImg' /></Link></button>
-            <p className='m-2'>{ cantidadEnCart() }</p>
+            <button className='botonesHeader m-2'><Link to={`Checkout/`}><img src={ CartImg } alt="Carrito" className='headerImg' /></Link></button>
+            <p className='m-3'>{ cantidadEnCart() }</p>
         </>
     )
 }

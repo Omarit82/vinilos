@@ -1,8 +1,8 @@
-import './Item.css';
+import './css/Item.css';
 import { Link } from 'react-router-dom';
 
 export const Item = ( {disco} ) => {
-
+    
     return(
         
         <article className="tarjeta">

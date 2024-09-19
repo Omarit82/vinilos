@@ -1,6 +1,6 @@
-import { Logo } from './Components/Logo';
-import { Titulo } from './Components/Titulo';
-import './Header.css';
+import { Logo } from './Logo';
+import { Titulo } from './Titulo';
+import './css/Header.css';
 
 export const Header = () => {
    

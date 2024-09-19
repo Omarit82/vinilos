@@ -1,8 +1,7 @@
 import { Item } from './Item';
-import './itemList.css';
+import './css/itemList.css';
 
 export const ItemList = ({ productos }) => {
-
 
     return(
         <div className='seccion'>

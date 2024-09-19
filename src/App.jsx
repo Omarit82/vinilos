@@ -9,8 +9,6 @@ import { CompraDetail } from "./Components/ItemListContainer/CompraDetail/Compra
 import { CartContext } from "./context/CartContext";
 import { useState } from "react";
 
-
-
 function App() {
 
     const [carrito, setCarrito ] = useState([]);   
