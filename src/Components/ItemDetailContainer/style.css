@@ -1,3 +1,17 @@
+.contador, .contadorComandos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+.contador{
+    flex-direction: column;
+}
+
+.cantidad{
+    margin: 10px;
+}
 .detalle {
     background-color: rgb(12, 103, 139);
     color: #fff;

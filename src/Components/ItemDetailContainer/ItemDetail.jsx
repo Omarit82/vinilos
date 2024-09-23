@@ -1,15 +1,12 @@
-import './css/ItemDetail.css';
-import { ItemCount } from './ItemCount';
-import { useContext, useState } from 'react';
-import { CartContext } from '../../context/CartContext';
+import { useContext } from "react";
+import { useState } from "react";
+import { CartContext } from "../../context/CartContext";
+import { ItemCount } from "./ItemCount";
 
+export const ItemDetail = ({ disco }) => {
 
-
-export const ItemDetail = ({ disco })=>{
-
-    const { carrito, addAlCart } = useContext(CartContext);
+    const { addAlCart } = useContext(CartContext);
     const [quantity, setQuantity] = useState(1);
-    console.log(carrito);
     
    
     const increment = ()=>{
@@ -23,7 +20,7 @@ export const ItemDetail = ({ disco })=>{
             setQuantity(quantity-1);
         }
     }
-    
+
     return(
         <article className="detalle">
             <div className='d-flex flex-column justify-content-center align-items-center'>
@@ -43,5 +40,6 @@ export const ItemDetail = ({ disco })=>{
                 addAlCart(disco, quantity)
             }}/>
         </article>
+
     )
 }

@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+main {
+    background-color: rgb(117, 177, 216);
+    color: #fff;
+    min-height: 75vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

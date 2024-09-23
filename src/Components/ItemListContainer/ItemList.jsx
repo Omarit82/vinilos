@@ -1,13 +1,16 @@
-import { Item } from './Item';
-import './css/itemList.css';
+import { Item } from "./Item"
 
-export const ItemList = ({ productos }) => {
 
-    return(
-        <div className='seccion'>
-            {productos.map((item, index) =>(
-                <Item key={ index } disco = { item } />           
-            ))}
-        </div>
+export const ItemList = ({items}) => {
+
+    /**SOLO SE ENCARGA DE RECIBIR LOS DATOS DE ITEMLISTCONTAINER Y MAPEARLOS**/
+    return (
+        <>
+            {
+                items.map((elemento,id) => (
+                    <Item item = {elemento} key={id} />
+                ))
+            }
+        </>
     )
 }
