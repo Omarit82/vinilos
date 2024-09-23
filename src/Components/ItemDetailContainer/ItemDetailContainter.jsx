@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
 import { ItemDetail } from './ItemDetail';
 import { useEffect, useState } from 'react';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { Error } from '../Error/Error';
 import { Loader } from '../Loader/Loader';
+import { db } from '../../firebase/config'
 
 export const ItemDetailContainer = () => {
 
@@ -13,12 +14,11 @@ export const ItemDetailContainer = () => {
     const [error, setError] = useState(false);
     
     useEffect(()=>{
-        const db = getFirestore();
         const info = doc(db,"discos",id);
         getDoc(info)
         .then((snapshot) => {
             setLoading(false);
-            setDisco({id:id, ...snapshot.data()})
+            setDisco({id:snapshot.id, ...snapshot.data()})
         })
         .catch((error)=>{
             setError(true);

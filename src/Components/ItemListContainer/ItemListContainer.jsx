@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import { ItemList } from "./ItemList";
 import './style.css'
 import { useEffect, useState } from "react";
-import { getDocs,getFirestore, collection, query, where, orderBy } from 'firebase/firestore'
+import { getDocs, collection, query, where, orderBy } from 'firebase/firestore'
 import { Loader } from '../Loader/Loader';
 import { Error } from "../Error/Error";
+import { db } from "../../firebase/config"
 
 export const ItemListContainer = () => {
     const { categoryId } = useParams();
@@ -13,16 +14,10 @@ export const ItemListContainer = () => {
     const [error, setError] = useState(false);
 
     useEffect(()=>{
-        const db = getFirestore()
         const info = collection(db,"discos")
-        let discos;
-        if (categoryId != null){
-            const filtro = query(info, where(categoryId,"==",true), orderBy("anioRelease","desc"));
-            discos = filtro;
-        }else{
-            const consulta = query(info, orderBy("anioRelease","desc"));
-            discos = consulta;
-        }
+        
+       const discos = categoryId ? query(info, where(categoryId,"==",true), orderBy("anioRelease","desc")): query(info, orderBy("anioRelease","desc"))
+    
         getDocs(discos)
         .then((snapshot) => {
             setLoading(false);
@@ -35,8 +30,6 @@ export const ItemListContainer = () => {
             console.error(error);
         })    
     },[categoryId])
-
-   
     
     
     return(
