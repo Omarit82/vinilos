@@ -1,44 +1,48 @@
-import { ItemList} from "./ItemList";
-import { useEffect, useState } from "react";
-import { getDiscosByCategory } from "../../getData";
-import DiscoImg from "../assets/img/disco.png";
 import { useParams } from "react-router-dom";
-import { Loader } from "./Loader";
+import { ItemList } from "./ItemList";
+import './style.css'
+import { useEffect, useState } from "react";
+import { getDocs,getFirestore, collection, query, where, orderBy } from 'firebase/firestore'
+import { Loader } from '../Loader/Loader';
+import { Error } from "../Error/Error";
 
-
-export const ItemListContainer = ( {greeting} ) => {
-    const [productos, setProductos] = useState([]);
+export const ItemListContainer = () => {
+    const { categoryId } = useParams();
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
-    const { categoriaId } = useParams();
-    
-    useEffect(() => {
-        const asyncFunc =  getDiscosByCategory;
-        asyncFunc (categoriaId)
-            .then(response => {
-                setProductos(response);
-                setLoading(false);
-            })
-            .catch(error => {
-                console.error(error);
-                setError(true);
-            })
-    }, [categoriaId])
 
-    return (
+    useEffect(()=>{
+        const db = getFirestore()
+        const info = collection(db,"discos")
+        let discos;
+        if (categoryId != null){
+            const filtro = query(info, where(categoryId,"==",true), orderBy("anioRelease","desc"));
+            discos = filtro;
+        }else{
+            const consulta = query(info, orderBy("anioRelease","desc"));
+            discos = consulta;
+        }
+        getDocs(discos)
+        .then((snapshot) => {
+            setLoading(false);
+            setProducts(
+                snapshot.docs.map((doc) => ({id: doc.id, ...doc.data() }))
+            );
+        })
+        .catch((error)=>{
+            setError(true);
+            console.error(error);
+        })    
+    },[categoryId])
+
+   
+    
+    
+    return(
+        error ? <Error />: loading ? <Loader /> : 
         <main>
-            {error ? <p>Ocurrio un error al cargar la informacion</p>:
-                loading ? <Loader /> : <>
-                <div className="d-flex justify-content-center align-items-center">
-                    <img src={ DiscoImg } alt="disco"  className="disco m-3" />
-                    <h2>{categoriaId}{greeting}</h2>
-                    <img src={ DiscoImg } alt="disco"  className="disco m-3" />
-                </div>
-                <div>
-                    <ItemList productos={productos} />
-                </div></>
-            }
-            
+            <ItemList items={products } />
         </main>
     )
 }

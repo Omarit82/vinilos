@@ -1,5 +1,4 @@
-import './ItemCount.css';
-
+import './style.css';
 
 export const ItemCount = ({ cantidad, increment, decrement, handleCart}) =>{
 
