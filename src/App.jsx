@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import { NavBar } from "./components/NavBar/NavBar"
+import { Navbar } from "./components/Navbar/NavBar"
 import { Cart } from "./components/Cart/Cart"
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer"
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainter"
@@ -14,7 +14,7 @@ const App = ()=>{
     <>
       <CartProvider>
         <Header titulo={'Tu disquería Online'} />
-        <NavBar />
+        <Navbar />
         <Routes >
           <Route path='/' element={ <ItemListContainer/>} />
           <Route path='/category/:categoryId' element={<ItemListContainer />} />

@@ -2,7 +2,7 @@ import './style.css';
 import { NavLink } from 'react-router-dom';
 import { CartWidget } from './CartWidget';
 
-export const NavBar = () => {
+export const Navbar = () => {
     return(
         <nav className='navBar'>
             <NavLink className="navButton" to={'/'}>Home</NavLink>
