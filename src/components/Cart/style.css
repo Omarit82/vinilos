@@ -1,0 +1,33 @@
+.cardOut {
+    background-color: rgb(12, 103, 139);
+    color: #fff;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.emptyMain {
+    background-color: rgb(0, 172, 57);
+    margin: 2%;
+    padding: 5%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.finalizar{
+    width:fit-content;
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+}
+.compraId{
+    border-radius: 5px;
+    border: 2px solid blue;
+    padding: 5px;
+}
