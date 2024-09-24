@@ -1,12 +1,11 @@
 import { Route, Routes } from "react-router-dom"
-import { Navbar } from "./components/Navbar/NavBar"
 import { Cart } from "./components/Cart/Cart"
 import { ItemListContainer } from "./components/ItemListContainer/ItemListContainer"
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainter"
 import { Footer } from "./components/Footer/Footer"
 import { Header } from "./components/Header/Header"
 import { CartProvider } from "./context/CartContext";
-
+import { NavBar} from "./components/Navbar/NavBar"
 
 const App = ()=>{
   
@@ -14,7 +13,7 @@ const App = ()=>{
     <>
       <CartProvider>
         <Header titulo={'Tu disquería Online'} />
-        <Navbar />
+        <NavBar />
         <Routes >
           <Route path='/' element={ <ItemListContainer/>} />
           <Route path='/category/:categoryId' element={<ItemListContainer />} />
