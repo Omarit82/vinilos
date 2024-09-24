@@ -6,6 +6,7 @@ import { Footer } from "./components/Footer/Footer"
 import { Header } from "./components/Header/Header"
 import { CartProvider } from "./context/CartContext";
 import { NavBar} from "./components/Navbar/NavBar"
+import { CheckOut } from "./components/Cart/CheckOut"
 
 const App = ()=>{
   
@@ -18,6 +19,7 @@ const App = ()=>{
           <Route path='/' element={ <ItemListContainer/>} />
           <Route path='/category/:categoryId' element={<ItemListContainer />} />
           <Route path='/detail/:id' element ={ <ItemDetailContainer />} />
+          <Route path='/checkout' element = {<CheckOut />} />
           <Route path='/cart' element={<Cart />} />
         </Routes> 
         <Footer />

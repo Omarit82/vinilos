@@ -34,6 +34,10 @@ export const CartProvider = ({children}) =>{
     const precioTotal = () =>{
       return carrito.reduce((acumulador, disco)=> acumulador + disco.precio*disco.quantity,0)
     }
+
+    const cartReset = () => {
+      setCarrito([]);
+    }
     const vaciarCarrito = () => {
       Swal.fire({
         title: "Desea eliminar todo el contenido de su carrito?",
@@ -55,12 +59,44 @@ export const CartProvider = ({children}) =>{
       })
     }
 
+    const eliminarItem = (id) =>{
+      Swal.fire({
+        title: '¿Desea eliminar el producto?',
+        icon: 'question',
+        showDenyButton: true,
+        confirmButtonColor: 'green',
+        confirmButtonText:"Confirmar",
+        denyButtonText: "Cancelar",
+        denyButtonColor:'red'
+      }).then((resultado) =>{
+        if(resultado.isConfirmed){
+          setCarrito(carrito.filter( disco => disco.id !== id));
+          Swal.fire({
+            title: 'Producto eliminado!',
+            icon: 'success',
+            timer:2000
+          })
+        }
+      })
+      
+    }
+
     useEffect(()=>{
       localStorage.setItem('carrito', JSON.stringify(carrito))
     },[carrito]);
 
+    const values = {
+      carrito,
+      addAlCart,
+      cantidadEnCart,
+      precioTotal,
+      vaciarCarrito,
+      eliminarItem,
+      cartReset
+    }
+
     return( 
-        <CartContext.Provider value={{ carrito, addAlCart, cantidadEnCart, precioTotal,vaciarCarrito }} >
+        <CartContext.Provider value={values} >
             {children}
         </CartContext.Provider>
     )

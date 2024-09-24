@@ -1,25 +1,6 @@
-import { useContext } from "react";
-import { useState } from "react";
-import { CartContext } from "../../context/CartContext";
 import { ItemCount } from "./ItemCount";
 
 export const ItemDetail = ({ disco }) => {
-
-    const { addAlCart } = useContext(CartContext);
-    const [quantity, setQuantity] = useState(1);
-    
-   
-    const increment = ()=>{
-        if(quantity < disco.stock){
-            setQuantity(quantity+1);
-        }
-    }
-
-    const decrement = ()=>{
-        if(quantity>1){
-            setQuantity(quantity-1);
-        }
-    }
 
     return(
         <article className="detalle">
@@ -36,10 +17,7 @@ export const ItemDetail = ({ disco }) => {
                 </div>              
             </div>
             <img src={disco.imagen} alt={disco.titulo} className='imgDisco m-2' />
-            <ItemCount cantidad={quantity} increment={increment} decrement={decrement} handleCart={()=>{
-                addAlCart(disco, quantity)
-            }}/>
+            <ItemCount disco={ disco } />
         </article>
-
     )
 }

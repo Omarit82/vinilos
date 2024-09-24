@@ -19,3 +19,15 @@
     flex-direction: column;
     align-items: center;
 }
+.finalizar{
+    width:fit-content;
+}
+.formulario{
+    display: flex;
+    flex-direction: column;
+}
+.compraId{
+    border-radius: 5px;
+    border: 2px solid blue;
+    padding: 5px;
+}

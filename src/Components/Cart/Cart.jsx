@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import { CheckOutItem } from "./CheckOutItem";
+import { CartItem } from "./CartItem";
 import { Empty } from "./Empty";
+import { Link } from "react-router-dom";
 
 export const Cart = () => {
     const { carrito, precioTotal,vaciarCarrito} = useContext(CartContext);
@@ -10,7 +11,7 @@ export const Cart = () => {
     if (carrito.length == 0){
         empty=true;
     }
-    console.log(precioTotal());
+    
     return (
         empty ? <Empty /> :
         <main className="flex-column">
@@ -19,11 +20,12 @@ export const Cart = () => {
             <section>
                 {
                     carrito.map((prod,id) => (                
-                            <CheckOutItem item={prod} key={id} />
+                            <CartItem item={prod} key={id} />
                     ))
                 }
             </section>
-            <button className='btn-danger btn mb-5' onClick={vaciarCarrito}>Vaciar Carrito</button>
+            <button className='btn-danger btn mb-2' onClick={vaciarCarrito}>Vaciar Carrito</button>
+            <Link to='/checkout' className="btn btn-success mb-5 finalizar">Finalizar Compra</Link>
         </main>
     )
 }

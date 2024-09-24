@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import './style.css';
+import { CartContext } from '../../context/CartContext';
 
-export const CheckOutItem = ( {item} ) =>{
+export const CartItem = ( {item} ) =>{
 
+    const { eliminarItem } = useContext(CartContext);
 
     return(
         <article className="cardOut">
@@ -18,8 +21,9 @@ export const CheckOutItem = ( {item} ) =>{
                 </div>
             </div>
             <div>
-                <button className="btn btn-danger" onClick={() => handleClick(item)} >Eliminar</button>
+                <button className="btn btn-danger" onClick={() => eliminarItem(item.id)} >Eliminar</button>
             </div>
+    
         </article>
     )
 }
