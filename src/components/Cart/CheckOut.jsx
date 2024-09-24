@@ -29,7 +29,7 @@ export const CheckOut = () => {
     if(pedidoId){
         return (
             <main className="flex-column">
-                <h1>Muchas gracias por tu compra!</h1>
+                <h1 className="text-center">Muchas gracias por tu compra!</h1>
                 <h2>Tu identificador de compra es:</h2>
                 <h2 className="compraId">{pedidoId}</h2>
                 <Link to='/' className="btn-success btn finalizar">Volver al Home</Link>
