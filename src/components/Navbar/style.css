@@ -5,6 +5,8 @@
     list-style: none;
     background-color: rgb(6, 126, 206);
     color: white;
+    padding: 0 5px 0 5px;
+    font-size: 14px;
 }
 
 .navButton {
@@ -21,19 +23,22 @@
     border-radius: 5px;
     margin-bottom: 5px;
 }
-.navBar{
-    .cart{
-        color: white;
-        margin-bottom: 5px;
-        margin-top: 8px;
-        text-decoration: none;
-    }
-    .imgCart{
-        height: 45px;
-        width: 45px;
-        background-color: white;
-        border-radius: 5%;
-    }
+.imgCart{
+    height: 45px;
+    width: 45px;
+    background-color: white;
+    border-radius: 5%;
 }
 
+#cart{
+    background-color: transparent;
+    padding: 0;
+    text-decoration: none;
+    color: white;
+    
+}
+
+#cart a.active{
+    background-color: greenyellow;
+}
 

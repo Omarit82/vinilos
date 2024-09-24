@@ -11,7 +11,7 @@ export const CartWidget = () => {
     return (
         <>
             <img src={ CartImg } alt="Carrito" className='imgCart' />
-            <p className='ms-3 mt-1 mb-0'>{ cantidadEnCart() }</p>
+            <p className='ms-1 mt-3 mb-0'>{ cantidadEnCart() }</p>
         </>
     )
 }
