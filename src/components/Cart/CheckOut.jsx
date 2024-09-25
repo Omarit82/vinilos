@@ -12,6 +12,8 @@ export const CheckOut = () => {
     const {carrito, precioTotal, cartReset} = useContext(CartContext);
     const [ pedidoId, setPedidoId ] = useState("");
     const [ loading, setLoading] = useState(false);
+    const [ incompleto, setIncompleto ] = useState(false);
+    const [ mensaje, setMensaje ] = useState("");
     
     const ajusteStock = () => {
         carrito.map((item) =>{ 
@@ -25,22 +27,34 @@ export const CheckOut = () => {
     }
 
     const comprar = (info) => {
-        const order = {
-            cliente: info,
-            productos: carrito,
-            importe: precioTotal()
+        console.log(info);
+        if(info.nombre === ""){
+            setMensaje("Debe completar el campo: Nombre")
+            setIncompleto(true);
+        }else if(info.apellido === ""){
+            setMensaje("Debe completar el campo: Apellido")
+            setIncompleto(true);
+        }else if(info.email === ""){
+            setMensaje("Debe completar el campo: Email")
+            setIncompleto(true);
+        }else{
+            const order = {
+                cliente: info,
+                productos: carrito,
+                importe: precioTotal()
+            }
+            
+            const pedidosRef = collection(db, "pedidos");
+            addDoc(pedidosRef, order)
+            .then((doc)=>{
+                setPedidoId(doc.id);
+                ajusteStock();
+            }).catch((e)=>{
+                console.log(e);
+            })
+            ;
+            cartReset();
         }
-        
-        const pedidosRef = collection(db, "pedidos");
-        addDoc(pedidosRef, order)
-        .then((doc)=>{
-            setPedidoId(doc.id);
-            ajusteStock();
-        }).catch((e)=>{
-            console.log(e);
-        })
-        ;
-        cartReset();
     }
 
     useEffect(()=>{
@@ -52,8 +66,8 @@ export const CheckOut = () => {
         return (
             <main className="flex-column">
                 <h1 className="text-center">Muchas gracias por tu compra!</h1>
-                <h2>Tu identificador de compra es:</h2>
-                <h2 className="compraId">{pedidoId}</h2>
+                <h2 className="text-center">Tu identificador de compra es:</h2>
+                <h2 className="compraId text-center">{pedidoId}</h2>
                 <Link to='/' className="btn-success btn finalizar">Volver al Home</Link>
             </main>
         )
@@ -63,12 +77,13 @@ export const CheckOut = () => {
         <main className="flex-column">
             <h1>Finalizar Compra</h1>
             <form className="formulario" onSubmit={handleSubmit(comprar)}>
-                <input className="m-2" type="text" placeholder="Ingrese su nombre" required {...register("nombre")}  />
-                <input className="m-2"  type="text" placeholder="Ingrese su apellido" required {...register("apellido")} />
-                <input className="m-2"  type="email" name="email" placeholder="Ingrese su email" required {...register('email')}/>
+                <input className="m-2" type="text" placeholder="Ingrese su nombre"  {...register("nombre")}  />
+                <input className="m-2"  type="text" placeholder="Ingrese su apellido"  {...register("apellido")} />
+                <input className="m-2"  type="email" name="email" placeholder="Ingrese su email"  {...register('email')}/>
                 <button className="btn btn-success" type='submit' onClick={()=>{setLoading(true)}} >Comprar</button>
             </form>
             {
+                incompleto ? <p className="msj">{mensaje}</p>:
                 loading && <Loader />
             }
         </main>
