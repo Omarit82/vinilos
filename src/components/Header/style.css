@@ -13,6 +13,9 @@ a{
     height: 35px;
     padding: 3px;
 }
+.titulo{
+    font-size: 20px;
+}
 
 .botonesHeader {
     background-color: transparent;
@@ -25,8 +28,19 @@ a{
     background-color: rgb(175, 230, 255);
 }
 
-@media (min-width: 860px) {
+@media (min-width: 1250px) {
     .logo{
         height: 120px;
+    }
+    .busqueda{
+        width: 25%
+    }
+}
+@media (min-width: 860px){
+    .titulo{
+        font-size: 50px;
+    }
+    .busqueda{
+        width: 30%;
     }
 }
