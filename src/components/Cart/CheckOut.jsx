@@ -40,7 +40,8 @@ export const CheckOut = () => {
             const order = {
                 cliente: info,
                 productos: carrito,
-                importe: precioTotal()
+                importe: precioTotal(),
+                fecha: new Date()
             }
             
             const pedidosRef = collection(db, "pedidos");
