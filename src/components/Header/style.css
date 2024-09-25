@@ -36,11 +36,16 @@ a{
         width: 25%
     }
 }
-@media (min-width: 860px){
+@media (min-width: 461px) and (max-width: 699px){
     .titulo{
-        font-size: 50px;
+        font-size: 30px;
     }
     .busqueda{
-        width: 30%;
+        width: 50%;
+    }
+}
+@media (min-width: 700px){
+    .titulo{
+        font-size: 40px;
     }
 }
