@@ -16,7 +16,7 @@ export const ItemListContainer = () => {
     useEffect(()=>{
         const info = collection(db,"discos")
         
-       const discos = categoryId ? query(info, where(categoryId,"==",true), orderBy("anioRelease","desc")): query(info, orderBy("anioRelease","desc"))
+        const discos = categoryId ? query(info, where(categoryId,"==",true), orderBy("anioRelease","desc")): query(info, orderBy("anioRelease","desc"))
     
         getDocs(discos)
         .then((snapshot) => {

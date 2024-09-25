@@ -10,7 +10,9 @@ export const ItemDetail = ({ disco }) => {
                 <div>
                     <h4>Autor: { disco.autor }</h4>
                     <h4>Año de salida: { disco.anioRelease }</h4>
-                    <h4>Formato: {disco.formato}</h4>
+                    <div className="d-flex">
+                        <h4>Formato disponible:</h4> {disco.Formato.map((form,id)=>(<p key={id} className="ms-2 mt-1">{form}</p>))}
+                    </div>
                     <h4>Genero: {disco.genero}</h4>
                     <h5>Stock disponible: {disco.stock}</h5>
                     <h5>Precio: USD { disco.precio }</h5>

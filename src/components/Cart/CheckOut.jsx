@@ -1,15 +1,29 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { CartContext } from "../../context/CartContext"
 import { useForm } from "react-hook-form";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, getDoc, doc } from "firebase/firestore";
 import { db } from '../../firebase/config';
 import { Link } from "react-router-dom";
+import { Loader } from "../Loader/Loader";
 
 export const CheckOut = () => {
 
     const { register, handleSubmit } = useForm();
     const {carrito, precioTotal, cartReset} = useContext(CartContext);
-    const [ pedidoId, setPedidoId ] = useState("")
+    const [ pedidoId, setPedidoId ] = useState("");
+    const [ loading, setLoading] = useState(false);
+    
+    const ajusteStock = () => {
+        carrito.map((item) =>{ 
+            const itemRef = doc(db,"discos",item.id)
+            getDoc(itemRef)
+            .then((snapshot)=>{
+                console.log(snapshot.data());
+                updateDoc(itemRef,{stock:item.stock-item.quantity})
+            })
+             
+        })
+    }
 
     const comprar = (info) => {
         const order = {
@@ -17,16 +31,21 @@ export const CheckOut = () => {
             productos: carrito,
             importe: precioTotal()
         }
-        console.log(order);
+        
         const pedidosRef = collection(db, "pedidos");
         addDoc(pedidosRef, order)
         .then((doc)=>{
             setPedidoId(doc.id);
-        });
+            ajusteStock();
+        }).catch((e)=>{
+            console.log(e);
+        })
+        ;
         cartReset();
     }
 
     if(pedidoId){
+        /** Hacemos un early return en el caso de que llegue un pedidoID (se realizo una compra) */
         return (
             <main className="flex-column">
                 <h1 className="text-center">Muchas gracias por tu compra!</h1>
