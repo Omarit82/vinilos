@@ -27,7 +27,6 @@ export const CheckOut = () => {
     }
 
     const comprar = (info) => {
-        console.log(info);
         if(info.nombre === ""){
             setMensaje("Debe completar el campo: Nombre")
             setIncompleto(true);
