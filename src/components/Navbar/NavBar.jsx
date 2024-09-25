@@ -9,7 +9,7 @@ export const NavBar = () => {
             <NavLink className="navButton" to={'/category/Ofertas'}>Ofertas</NavLink>
             <NavLink className="navButton" to={'/category/Vinilos'}>Vinilos</NavLink>
             <NavLink className="navButton" to={'/category/CDs'}>Cd's</NavLink>
-            <NavLink className="d-flex ms-2" id="cart" to={'/cart'}><CartWidget /></NavLink>
+            <NavLink className="d-flex ms-2 mb-1" id="cart" to={'/cart'}><CartWidget /></NavLink>
         </nav>
     )
 }

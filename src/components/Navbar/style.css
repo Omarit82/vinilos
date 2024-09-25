@@ -19,7 +19,7 @@
 .navBar a.active{
     background-color: rgb(0, 172, 57);
     color: white;
-    padding: 15px;
+    padding: 10px;
     border-radius: 5px;
     margin-bottom: 5px;
 }
@@ -42,3 +42,11 @@
     background-color: greenyellow;
 }
 
+@media (min-width:870px ){
+    .navButton{
+        font-size: 20px;
+    }
+    .navBar a.active{
+        padding:15px;
+    }
+}

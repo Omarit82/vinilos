@@ -18,7 +18,6 @@ export const CheckOut = () => {
             const itemRef = doc(db,"discos",item.id)
             getDoc(itemRef)
             .then((snapshot)=>{
-                console.log(snapshot.data());
                 updateDoc(itemRef,{stock:item.stock-item.quantity})
             })
              
@@ -44,7 +43,11 @@ export const CheckOut = () => {
         cartReset();
     }
 
-    if(pedidoId){
+    useEffect(()=>{
+        setLoading(false)
+    },[pedidoId])
+  
+    if(pedidoId){   
         /** Hacemos un early return en el caso de que llegue un pedidoID (se realizo una compra) */
         return (
             <main className="flex-column">
@@ -63,8 +66,11 @@ export const CheckOut = () => {
                 <input className="m-2" type="text" placeholder="Ingrese su nombre" required {...register("nombre")}  />
                 <input className="m-2"  type="text" placeholder="Ingrese su apellido" required {...register("apellido")} />
                 <input className="m-2"  type="email" name="email" placeholder="Ingrese su email" required {...register('email')}/>
-                <button className="btn btn-success" type='submit' >Comprar</button>
+                <button className="btn btn-success" type='submit' onClick={()=>{setLoading(true)}} >Comprar</button>
             </form>
+            {
+                loading && <Loader />
+            }
         </main>
     )
 }
