@@ -12,6 +12,9 @@
 .cantidad{
     margin: 10px;
 }
+.sinStock{
+    color:red;
+}
 .detalle {
     background-color: rgb(12, 103, 139);
     color: #fff;

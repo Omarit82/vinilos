@@ -23,11 +23,16 @@ export const ItemCount = ({ disco }) =>{
         <div className="contador">
             <div className="contadorComandos">
                 <button className="btn btn-info" onClick={ decrement }> - </button>
-                <h4 className="cantidad">{ quantity }</h4>
+                {
+                   disco.stock === 0 ? <h4 className="cantidad sinStock">0</h4>:<h4 className="cantidad">{ quantity }</h4>
+                }
                 <button className="btn btn-info" onClick={ increment }> + </button>
             </div>
             <div>
+            {
+                disco.stock === 0 ? <button className="btn btn-info mb-3" disabled onClick={()=>addAlCart(disco, quantity)} >Add al Cart</button>:
                 <button className="btn btn-info mb-3" onClick={()=>addAlCart(disco, quantity)} >Add al Cart</button>
+            }
             </div>
         </div>
     )
