@@ -6,7 +6,7 @@
     background-color: rgb(6, 126, 206);
     color: white;
     padding: 0 5px 0 5px;
-    font-size: 14px;
+    font-size: 10px;
 }
 
 .navButton {
@@ -41,9 +41,17 @@
 #cart a.active{
     background-color: greenyellow;
 }
+@media (min-width:500px) and (max-width:869px){
+    .navButton{
+        font-size: 15px;
+    }
+}
 
 @media (min-width:870px ){
     .navButton{
+        font-size: 20px;
+    }
+    .navBar{
         font-size: 20px;
     }
     .navBar a.active{
