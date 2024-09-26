@@ -7,22 +7,25 @@ import { Header } from "./components/Header/Header"
 import { CartProvider } from "./context/CartContext";
 import { NavBar} from "./components/Navbar/NavBar"
 import { CheckOut } from "./components/Cart/CheckOut"
+import { SearchProvider } from "./context/SearchContext"
 
 const App = ()=>{
   
   return (
     <>
       <CartProvider>
-        <Header titulo={'Tu disquería Online'} />
-        <NavBar />
-        <Routes >
-          <Route path='/' element={ <ItemListContainer/>} />
-          <Route path='/category/:categoryId' element={<ItemListContainer />} />
-          <Route path='/detail/:id' element ={ <ItemDetailContainer />} />
-          <Route path='/checkout' element = {<CheckOut />} />
-          <Route path='/cart' element={<Cart />} />
-        </Routes> 
-        <Footer />
+        <SearchProvider>
+          <Header titulo={'Tu disquería Online'} />
+          <NavBar />
+          <Routes >
+            <Route path='/' element={ <ItemListContainer/>} />
+            <Route path='/category/:categoryId' element={<ItemListContainer />} />
+            <Route path='/detail/:id' element ={ <ItemDetailContainer />} />
+            <Route path='/checkout' element = {<CheckOut />} />
+            <Route path='/cart' element={<Cart />} />
+          </Routes> 
+          <Footer />
+        </SearchProvider>
       </CartProvider>
     </>
   )

@@ -2,9 +2,17 @@ import { Link } from 'react-router-dom';
 import LogoImg from './assets/img/logo.webp';
 import SearchImg from './assets/img/search.png';
 import './style.css';
+import { SearchContext } from '../../context/SearchContext'
+import { useContext } from 'react';
 
 export const Header = ({titulo}) => {
-   
+
+    const { handleSearch } = useContext(SearchContext);
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        handleSearch(e.target[0].value)
+    }
     
     return(
         <header className='d-flex'>
@@ -13,9 +21,9 @@ export const Header = ({titulo}) => {
             </Link>
             <div className='d-flex flex-column flex-md-row justify-content-around align-items-center w-100'>
                 <h1 className="text-center ms-3 me-3 titulo">{ titulo }</h1>
-                <form action="" className='busqueda d-flex m-1 m-md-2 align-items-center'>
-                    <input type="text" name="busqueda" placeholder=' ...busqueda' className='w-md-75 w-100 me-3 busquedaInput' />
-                    <button type="submit" className='botonesHeader'><img src={ SearchImg } alt="Busqueda" className="headerImg" /></button>
+                <form onSubmit={handleSubmit} className='busqueda d-flex m-1 m-md-2 align-items-center'>
+                    <input type="text" name="busqueda" placeholder=' ...busqueda por titulo' className='w-md-75 w-100 me-3 busquedaInput' />
+                    <button type="submit"  className='botonesHeader'><img src={ SearchImg } alt="Busqueda" className="headerImg" /></button>
                 </form>
             </div>
         </header>

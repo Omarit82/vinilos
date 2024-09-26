@@ -1,12 +1,13 @@
 import { useParams } from "react-router-dom";
 import { ItemList } from "./ItemList";
 import './style.css'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getDocs, collection, query, where, orderBy } from 'firebase/firestore'
 import { Loader } from '../Loader/Loader';
 import { Error } from "../Error/Error";
 import { db } from "../../firebase/config"
 import { EmptyCategory } from "./EmptyCategory";
+import { SearchContext } from "../../context/SearchContext"; 
 
 
 export const ItemListContainer = () => {
@@ -14,8 +15,11 @@ export const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const { search } = useContext(SearchContext);
+
 
     useEffect(()=>{
+        console.log("Se busco: "+search); /** */
         const info = collection(db,"discos")
         let discos;
         if(categoryId === "Ofertas"){
@@ -36,7 +40,7 @@ export const ItemListContainer = () => {
             setError(true);
             console.error(error);
         })    
-    },[categoryId])
+    },[categoryId, search])
     
     
     return(
