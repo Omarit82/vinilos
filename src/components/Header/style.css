@@ -37,6 +37,9 @@ a{
     .busqueda{
         width: 25%
     }
+    header{
+        height: 150px;
+    }
 }
 @media (min-width: 461px) and (max-width: 699px){
     .titulo{

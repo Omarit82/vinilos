@@ -6,6 +6,8 @@ import { getDocs, collection, query, where, orderBy } from 'firebase/firestore'
 import { Loader } from '../Loader/Loader';
 import { Error } from "../Error/Error";
 import { db } from "../../firebase/config"
+import { EmptyCategory } from "./EmptyCategory";
+
 
 export const ItemListContainer = () => {
     const { categoryId } = useParams();
@@ -15,8 +17,13 @@ export const ItemListContainer = () => {
 
     useEffect(()=>{
         const info = collection(db,"discos")
-        
-        const discos = categoryId ? query(info, where(categoryId,"==",true), orderBy("anioRelease","desc")): query(info, orderBy("anioRelease","desc"))
+        let discos;
+        if(categoryId === "Ofertas"){
+            discos = query (info, where("Ofertas","==",true), orderBy("anioRelease","desc"));
+        }else{
+            discos = categoryId ? query(info, where("genero","==",categoryId), orderBy("anioRelease","desc")): query(info, orderBy("anioRelease","desc"))
+        }
+       
     
         getDocs(discos)
         .then((snapshot) => {
@@ -35,7 +42,7 @@ export const ItemListContainer = () => {
     return(
         error ? <Error />: loading ? <Loader /> : 
         <main>
-            <ItemList items={products } />
+            {(products.length>0)?<ItemList items={products } /> : <EmptyCategory />}
         </main>
     )
 }
