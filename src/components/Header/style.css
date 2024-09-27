@@ -19,6 +19,11 @@ a{
 .busquedaInput{
     height: 30px;
 }
+
+.busqueda {
+    width: 60%;
+}
+
 .botonesHeader {
     background-color: transparent;
     border: none;
@@ -30,27 +35,37 @@ a{
     background-color: rgb(175, 230, 255);
 }
 
+.user {
+    height: 35px;
+}
+.userContainer{
+    width: 35px;
+    margin-right: 10px;
+}
+
 @media (min-width: 1250px) {
     .logo{
         height: 120px;
     }
-    .busqueda{
-        width: 25%
-    }
+   
     header{
         height: 150px;
+    }
+    .user{
+        height: 50px;
     }
 }
 @media (min-width: 461px) and (max-width: 699px){
     .titulo{
         font-size: 30px;
     }
-    .busqueda{
-        width: 50%;
-    }
+    
 }
 @media (min-width: 700px){
     .titulo{
         font-size: 40px;
+    }
+    .busqueda{
+        width: 100%;
     }
 }
