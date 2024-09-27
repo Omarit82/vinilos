@@ -42,7 +42,10 @@ a{
     width: 35px;
     margin-right: 10px;
 }
-
+.registro{
+    color:yellowgreen;
+    
+}
 @media (min-width: 1250px) {
     .logo{
         height: 120px;
