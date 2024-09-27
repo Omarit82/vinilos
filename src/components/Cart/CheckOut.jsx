@@ -62,7 +62,7 @@ export const CheckOut = () => {
     },[pedidoId])
   
     if(pedidoId){   
-        /** Hacemos un early return en el caso de que llegue un pedidoID (se realizo una compra) */
+        /** Hacemos un early return  para cortar el codigo en el caso de que llegue un pedidoID (se realizo una compra) */
         return (
             <main className="flex-column">
                 <h1 className="text-center">Muchas gracias por tu compra!</h1>

@@ -19,9 +19,6 @@ export const ItemListContainer = () => {
     const { search } = useContext(SearchContext);
 
     useEffect(()=>{
-        //console.log("Se busco: "+search);
-        //console.log(products);
-        /** busqueda por autor */
         const res = products.filter((item) => ((item.titulo.toLowerCase()).includes(search.toLowerCase())||(item.autor.toLowerCase().includes(search.toLowerCase()))));
         setProductosFiltrados(res);
     },[search])
