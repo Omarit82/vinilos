@@ -13,13 +13,21 @@ import { SearchContext } from "../../context/SearchContext";
 export const ItemListContainer = () => {
     const { categoryId } = useParams();
     const [products, setProducts] = useState([]);
+    const [productosFiltrados, setProductosFiltrados] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const { search } = useContext(SearchContext);
 
+    useEffect(()=>{
+        //console.log("Se busco: "+search);
+        //console.log(products);
+        /** busqueda por autor */
+        const res = products.filter((item) => ((item.titulo.toLowerCase()).includes(search.toLowerCase())||(item.autor.toLowerCase().includes(search.toLowerCase()))));
+        setProductosFiltrados(res);
+    },[search])
+
 
     useEffect(()=>{
-        console.log("Se busco: "+search); /** */
         const info = collection(db,"discos")
         let discos;
         if(categoryId === "Ofertas"){
@@ -40,13 +48,15 @@ export const ItemListContainer = () => {
             setError(true);
             console.error(error);
         })    
-    },[categoryId, search])
+    },[categoryId])
     
     
     return(
         error ? <Error />: loading ? <Loader /> : 
         <main>
-            {(products.length>0)?<ItemList items={products } /> : <EmptyCategory />}
+            {
+            (search !=='') ? <ItemList items={productosFiltrados } />:
+            (products.length>0)?<ItemList items={products } /> : <EmptyCategory />}
         </main>
     )
 }

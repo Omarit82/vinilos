@@ -10,8 +10,8 @@ export const Header = ({titulo}) => {
     const { handleSearch } = useContext(SearchContext);
 
     const handleSubmit = (e) =>{
-        e.preventDefault();
-        handleSearch(e.target[0].value)
+        /*e.preventDefault();*/
+        handleSearch(e);
     }
     
     return(
@@ -21,9 +21,9 @@ export const Header = ({titulo}) => {
             </Link>
             <div className='d-flex flex-column flex-md-row justify-content-around align-items-center w-100'>
                 <h1 className="text-center ms-3 me-3 titulo">{ titulo }</h1>
-                <form onSubmit={handleSubmit} className='busqueda d-flex m-1 m-md-2 align-items-center'>
-                    <input type="text" name="busqueda" placeholder=' ...busqueda por titulo' className='w-md-75 w-100 me-3 busquedaInput' />
-                    <button type="submit"  className='botonesHeader'><img src={ SearchImg } alt="Busqueda" className="headerImg" /></button>
+                <form  className='busqueda d-flex m-1 m-md-2 align-items-center'>
+                    <input onChange={(e)=>{handleSubmit(e.target.value)}} type="text" name="busqueda" placeholder=' ...busqueda' className='w-md-75 w-100 me-3 busquedaInput' />
+                   {/* <button type="submit"  className='botonesHeader'><img src={ SearchImg } alt="Busqueda" className="headerImg" /></button>*/}
                 </form>
             </div>
         </header>
