@@ -4,10 +4,14 @@ import './style.css';
 import { SearchContext } from '../../context/SearchContext'
 import { useContext } from 'react';
 import UserIcon from './assets/img/user.png';
+import { UserContext } from '../../context/UserContext';
+
 
 export const Header = ({titulo}) => {
 
     const { handleSearch } = useContext(SearchContext);
+    const { user, handleLogout } = useContext(UserContext);
+    
 
     return(
         <header className='d-flex'>
@@ -21,6 +25,14 @@ export const Header = ({titulo}) => {
                         <input onChange={(e)=>{handleSearch(e.target.value)}} type="text" name="busqueda" placeholder=' ...busqueda' className='w-md-75 w-100 me-3 busquedaInput' />
                     </form>
                     <Link to='/login' className='userContainer'><img className='user' src={UserIcon} alt="Icono de usuario" /></Link>
+                        {
+                            (Object.keys(user).length > 0 ) && 
+                            <div className='contenedorUsuario'>
+                                <p className='usuario'>{user.user.displayName}</p>
+                                <button className='botonUsuario' onClick={handleLogout}><p>Log out</p></button>
+                            </div>
+                        }
+                    
                 </div>
             </div>
         </header>

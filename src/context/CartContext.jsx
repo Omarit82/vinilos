@@ -6,12 +6,14 @@ export const CartContext = createContext();
 const carritoInicial = (JSON.parse(localStorage.getItem('carrito')) || []);
 
 export const CartProvider = ({children}) =>{
-    const [carrito, setCarrito ] = useState(carritoInicial);   
+    const [ carrito, setCarrito ] = useState(carritoInicial);   
+    const [ empty, setEmpty ] = useState(true);
 
     const addAlCart = (disco, quantity) =>{
         const item = {...disco,quantity};/**AGREGA AL OBJETO DISCO LA CANTIDAD A COMPRAR */
         const auxCarrito = [...carrito];
         const enElCarrito = auxCarrito.find((disco) => disco.id === item.id);
+        setEmpty(false);
     
         if(enElCarrito){
             enElCarrito.quantity += quantity;
@@ -38,6 +40,7 @@ export const CartProvider = ({children}) =>{
     const cartReset = () => {
       setCarrito([]);
     }
+
     const vaciarCarrito = () => {
       Swal.fire({
         title: "Desea eliminar todo el contenido de su carrito?",
@@ -50,6 +53,7 @@ export const CartProvider = ({children}) =>{
       }).then((resultado) =>{
         if(resultado.isConfirmed){
           setCarrito([]);
+          setEmpty(true);
           Swal.fire({
             title:"Carrito Eliminado",
             icon: 'success',
@@ -82,7 +86,7 @@ export const CartProvider = ({children}) =>{
     }
 
     useEffect(()=>{
-      localStorage.setItem('carrito', JSON.stringify(carrito))
+      localStorage.setItem('carrito', JSON.stringify(carrito));
     },[carrito]);
 
     const values = {
@@ -92,7 +96,8 @@ export const CartProvider = ({children}) =>{
       precioTotal,
       vaciarCarrito,
       eliminarItem,
-      cartReset
+      cartReset,
+      empty
     }
 
     return( 

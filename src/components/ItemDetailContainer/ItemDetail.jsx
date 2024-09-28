@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { ItemCount } from "./ItemCount";
+import { UserContext } from "../../context/UserContext";
 
 export const ItemDetail = ({ disco }) => {
+    const { user } = useContext(UserContext)
 
     return(
         <article className="detalle">
@@ -19,7 +22,7 @@ export const ItemDetail = ({ disco }) => {
                 </div>              
             </div>
             <img src={disco.imagen} alt={disco.titulo} className='imgDisco m-2' />
-            <ItemCount disco={ disco } />
+            {(Object.keys(user).length > 0)?<ItemCount disco={ disco } />:<p>Debe loguearse para cargar al carrito</p>}
         </article>
     )
 }

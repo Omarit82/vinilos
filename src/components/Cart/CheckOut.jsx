@@ -5,15 +5,17 @@ import { collection, addDoc, updateDoc, getDoc, doc } from "firebase/firestore";
 import { db } from '../../firebase/config';
 import { Link } from "react-router-dom";
 import { Loader } from "../Loader/Loader";
+import { UserContext } from "../../context/UserContext";
 
 export const CheckOut = () => {
 
-    const { register, handleSubmit } = useForm();
+    const { handleSubmit } = useForm();
     const {carrito, precioTotal, cartReset} = useContext(CartContext);
+    const { user } = useContext(UserContext);
     const [ pedidoId, setPedidoId ] = useState("");
     const [ loading, setLoading] = useState(false);
-    const [ incompleto, setIncompleto ] = useState(false);
-    const [ mensaje, setMensaje ] = useState("");
+    
+
     
     const ajusteStock = () => {
         carrito.map((item) =>{ 
@@ -26,19 +28,9 @@ export const CheckOut = () => {
         })
     }
 
-    const comprar = (info) => {
-        if(info.nombre === ""){
-            setMensaje("Debe completar el campo: Nombre")
-            setIncompleto(true);
-        }else if(info.apellido === ""){
-            setMensaje("Debe completar el campo: Apellido")
-            setIncompleto(true);
-        }else if(info.email === ""){
-            setMensaje("Debe completar el campo: Email")
-            setIncompleto(true);
-        }else{
-            const order = {
-                cliente: info,
+    const comprar = () => {
+        const order = {
+                cliente: user,
                 productos: carrito,
                 importe: precioTotal(),
                 fecha: new Date()
@@ -51,10 +43,8 @@ export const CheckOut = () => {
                 ajusteStock();
             }).catch((e)=>{
                 console.log(e);
-            })
-            ;
+            });
             cartReset();
-        }
     }
 
     useEffect(()=>{
@@ -77,13 +67,9 @@ export const CheckOut = () => {
         <main className="flex-column">
             <h1>Finalizar Compra</h1>
             <form className="formulario" onSubmit={handleSubmit(comprar)}>
-                <input className="m-2" type="text" placeholder="Ingrese su nombre"  {...register("nombre")}  />
-                <input className="m-2"  type="text" placeholder="Ingrese su apellido"  {...register("apellido")} />
-                <input className="m-2"  type="email" name="email" placeholder="Ingrese su email"  {...register('email')}/>
                 <button className="btn btn-success" type='submit' onClick={()=>{setLoading(true)}} >Comprar</button>
             </form>
             {
-                incompleto ? <p className="msj">{mensaje}</p>:
                 loading && <Loader />
             }
         </main>

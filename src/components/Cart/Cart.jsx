@@ -5,12 +5,7 @@ import { Empty } from "./Empty";
 import { Link } from "react-router-dom";
 
 export const Cart = () => {
-    const { carrito, precioTotal,vaciarCarrito} = useContext(CartContext);
-    let empty = false
-
-    if (carrito.length == 0){
-        empty=true;
-    }
+    const { carrito, precioTotal,vaciarCarrito, empty} = useContext(CartContext);
     
     return (
         empty ? <Empty /> :

@@ -39,8 +39,20 @@ a{
     height: 35px;
 }
 .userContainer{
+    display: flex;
     width: 35px;
     margin-right: 10px;
+}
+.usuario{
+    color:yellowgreen;
+    font-weight: bolder;
+    margin-left: 5px;
+    text-decoration: none;
+    margin-bottom: 0;
+}
+.botonUsuario {
+    background-color:transparent;
+    color: yellowgreen;
 }
 .registro{
     color:yellowgreen;
