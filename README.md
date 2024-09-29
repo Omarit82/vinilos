@@ -8,9 +8,9 @@ Sitio e-Commerce de venta de vinilos y cds e items.
 
 ## Librerias Utilizadas: 
 
-*bootstrap: 5.3.3
-*firebase: 10.13.2
-*sweetalert2: 11.14.1
+- bootstrap: 5.3.3
+- firebase: 10.13.2
+- sweetalert2: 11.14.1
 
 ## Instalación
 
