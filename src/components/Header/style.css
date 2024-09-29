@@ -43,16 +43,34 @@ a{
     width: 35px;
     margin-right: 10px;
 }
+
+.contenedorUsuario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px 0 5px;
+    font-size: 11px;
+}
 .usuario{
     color:yellowgreen;
     font-weight: bolder;
-    margin-left: 5px;
     text-decoration: none;
     margin-bottom: 0;
+    
 }
-.botonUsuario {
+
+.botonLogout {
+    color: yellow;
+    margin-bottom: 0;
+    margin-right: 5px;
+    font-weight: bolder;
+    
+}
+
+.botonLogin {
     background-color:transparent;
-    color: yellowgreen;
+    color: rgb(166, 230, 39);
 }
 .registro{
     color:yellowgreen;
@@ -74,13 +92,15 @@ a{
     .titulo{
         font-size: 30px;
     }
-    
+    .contenedorUsuario{
+        font-size: 15px;
+    }
 }
 @media (min-width: 700px){
     .titulo{
         font-size: 40px;
     }
-    .busqueda{
-        width: 100%;
+    .contenedorUsuario{
+        font-size: 20px;
     }
 }

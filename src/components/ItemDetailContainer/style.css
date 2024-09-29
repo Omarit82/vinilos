@@ -8,7 +8,9 @@
 .contador{
     flex-direction: column;
 }
-
+.mensaje{
+    color: yellow;
+}
 .cantidad{
     margin: 10px;
 }

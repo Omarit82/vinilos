@@ -22,7 +22,7 @@ export const ItemDetail = ({ disco }) => {
                 </div>              
             </div>
             <img src={disco.imagen} alt={disco.titulo} className='imgDisco m-2' />
-            {(Object.keys(user).length > 0)?<ItemCount disco={ disco } />:<p>Debe loguearse para cargar al carrito</p>}
+            {(Object.keys(user).length > 0)?<ItemCount disco={ disco } />:<p className="mensaje" >Debe loguearse para cargar al carrito</p>}
         </article>
     )
 }

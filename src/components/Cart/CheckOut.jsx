@@ -55,9 +55,9 @@ export const CheckOut = () => {
         /** Hacemos un early return  para cortar el codigo en el caso de que llegue un pedidoID (se realizo una compra) */
         return (
             <main className="flex-column">
-                <h1 className="text-center">Muchas gracias por tu compra!</h1>
-                <h2 className="text-center">Tu identificador de compra es:</h2>
-                <h2 className="compraId text-center">{pedidoId}</h2>
+                <h2 className="text-center">Muchas gracias por tu compra!</h2>
+                <h3 className="text-center">Tu identificador de compra es:</h3>
+                <h3 className="compraId text-center">{pedidoId}</h3>
                 <Link to='/' className="btn-success btn finalizar">Volver al Home</Link>
             </main>
         )
@@ -65,13 +65,44 @@ export const CheckOut = () => {
 
     return(
         <main className="flex-column">
-            <h1>Finalizar Compra</h1>
-            <form className="formulario" onSubmit={handleSubmit(comprar)}>
-                <button className="btn btn-success" type='submit' onClick={()=>{setLoading(true)}} >Comprar</button>
-            </form>
             {
                 loading && <Loader />
             }
+            <h2>Finalizar Compra</h2>
+            <div>
+                <table>
+                    <caption>Resumen de la compra:</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {carrito.map((data) => (
+                            <tr>
+                                <th>{data.titulo}</th>
+                                <td>{data.quantity}</td>
+                                <td>${data.precio}</td>
+                                <td>${data.precio*data.quantity}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row" colspan="2">Importe Total: </th>
+                            <td></td>
+                            <td>${precioTotal()}</td>
+                        </tr>
+                    </tfoot>   
+                </table>
+            </div>
+            <form className="formulario" onSubmit={handleSubmit(comprar)}>
+                <button className="btn btn-success" type='submit' onClick={()=>{setLoading(true)}} >Comprar</button>
+            </form>
+            
         </main>
     )
 }
