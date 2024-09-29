@@ -57,6 +57,7 @@ export const CartProvider = ({children}) =>{
     /**FUNCION QUE SETEA EN CERO EL CARRITO */
     const cartReset = () => {
       setCarrito([]);
+      setEmpty(true);
     }
     /**FUNCION PARA VACIAR EL CARRITO */
     const vaciarCarrito = () => {
