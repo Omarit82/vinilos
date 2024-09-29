@@ -39,8 +39,10 @@ La app permite a un usuario no logueado navegar y ver la informacion de los disc
 La barra de navegacion filtra los discos por ritmo musical o por discos que se encuentren en oferta. La barra de busqueda en el header, filtra onChange los discos por titulo o autor.(ver video adjunto) 
 
 El usuario se autentica desde Firebase, para lo cual se debe tener un mail con un dominio verdadero (@gmail.com, @gmail.com.ar, @hotmail.com..etc) No tiene validacion de dos pasos, donde se envia el mail de verificacion, para poder utilizar un mail inexistente con un dominio verdadero (Las futuras versiones de la app lo implementaran) ej: algo@gmail.com va a ser un mail valido.
+
 La app lleva un control del stock disponible y no permite cargar al carrito un disco del cual no haya stock. (Ver video)
 Al ingresar al carrito, se muestra un resumen de el costo total de los discos a comprar, y un detalle de cada disco donde se puede eliminar un disco o todo el carrito.
+
 Al ir al checkout, se muestra una tabla con el resumen final y al realizar la compra. La informacion de la compra es cargada al firestore donde en la compra queda detallado:
 
 * Usuario que realizo la compra
