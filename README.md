@@ -48,4 +48,4 @@ Al ir al checkout, se muestra una tabla con el resumen final y al realizar la co
 * detalle de los items comprados
 * fecha de la compra realizada.
 
-La pagina se encuentra deployada en: vinilos.netlify.app
+La pagina se encuentra deployada en: https://vinilos.netlify.app
